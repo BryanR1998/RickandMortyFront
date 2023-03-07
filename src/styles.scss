@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+// Importacion de variables de colores y sombras
+@import "./color.scss";
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+h1 {
+    font-family: -apple-system,'BlinkMacSystemFont','Segoe UI','Roboto','Helvetica','Arial',sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol';
+}
+
+.card {
+    box-shadow: 0 1px 3px $shadow1, $shadow2;
+    box-sizing: border-box;
+    margin: 10px 0;
+    background-color: $white;
+    max-width: 529px;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: all 0.2 ease-in-out;
+
+    &:hover {
+        box-shadow: 0 5px 5px $shadow3, 0 6px 6px $shadow2;
+        cursor: pointer;
+    }
+
+    img {
+        opacity: 0.7;
+        width: 100%;
+        transition: opacity 0.7;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    .card-inner {
+        padding: 10px;
+    }
+}
+
+.no-hidden {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    visibility: visible;
+}
+
+@media(max-width:570px) {
+    .card {
+        img {
+            opacity: 1;
+        }
+    }
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    height: 80px;
+}
+
+.mat-mdc-form-field-subscript-wrapper {
+    display: none;
+}
+
+
+// Boton Flotante
+.float-button {
+    display: flex;
+    position: fixed;
+    right: 50px;
+    bottom: 30px;
+    z-index: 10;
+}

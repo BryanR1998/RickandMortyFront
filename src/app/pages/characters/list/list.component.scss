@@ -1,0 +1,147 @@
+// boton
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.search-button {
+    margin-left: 16px;
+    background-color: #4CAF50;
+    color: white;
+
+    &:hover {
+        background-color: #3E8E41;
+    }
+}
+
+.list-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 16px;
+}
+
+.card-container {
+    margin: 10px 10px;
+}
+
+// Card animadas
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 300px;
+    perspective: 1000px;
+    margin: 10px;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+.mat-card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-card-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title-card {
+    display: flex;
+    justify-content: center;
+}
+
+.p-card {
+    text-align: justify;
+    margin: 10px;
+}
+
+.button-card {
+    display: flex;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+// No results Styles
+
+#no-results {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 16px;
+    position: relative;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+#no-results-icon {
+    font-size: 48px;
+}
+
+#no-results-message {
+    margin-top: 16px;
+    font-size: 24px;
+}
+
+.results-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#search-results {
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    font-size: 10px;
+    font-weight: normal;
+    text-align: center;
+    margin: 0;
+    opacity: 0;
+}
+
+
+.paginator-container {
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,66 @@
+<!-- <app-header></app-header>
+ -->
+
+<div class="search-container">
+    <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSearch()">
+        <mat-form-field appearance="fill">
+            <mat-label>Search characters</mat-label>
+            <input matInput formControlName="searchTerm" name="searchTerm">
+            <mat-icon matPrefix type="submit">search</mat-icon>
+            <mat-icon *ngIf="searchForm" matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()">
+                close
+            </mat-icon>
+        </mat-form-field>
+    </form>
+</div>
+
+<!-- *ngIf="!noResults" -->
+<div>
+    <div class="list-container">
+
+        <ng-container *ngFor="let character of characters">
+
+            <!-- Cards -->
+            <mat-card class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front mat-card-content">
+                        <img mat-card-image src="{{ character.image }}" alt="Front Image">
+                    </div>
+
+                    <div class="flip-card-back mat-card-content">
+
+                        <mat-card-title class="title-card">{{ character.name }}</mat-card-title>
+
+                        <mat-card-content class="p-card">
+                            <mat-card-subtitle>{{ character.gender }}</mat-card-subtitle>
+                            <mat-card-subtitle>{{ character.status }}</mat-card-subtitle>
+                        </mat-card-content>
+
+                        <mat-card-actions class="button-card">
+                            <button mat-raised-button color="accent" [routerLink]="['../description', character.id]">View</button>
+                        </mat-card-actions>
+
+                    </div>
+                </div>
+            </mat-card>
+
+        </ng-container>
+    </div>
+
+    <div class="paginator-container">
+        <mat-paginator [length]="totalPages" [pageSize]="pageSize" (page)="onPageChanged($event); ">
+        </mat-paginator>
+    </div>
+
+</div>
+
+<!-- <div id="no-results" >
+    <div id="no-results-icon">🙁</div>
+    <div id="no-results-message">No results found</div>
+</div> -->
+
+<div class="float-button">
+    <button mat-fab color="accent" matTooltip="Subir al principio" matTooltipPosition="above">
+        <mat-icon>arrow_upward</mat-icon>
+    </button>
+</div>

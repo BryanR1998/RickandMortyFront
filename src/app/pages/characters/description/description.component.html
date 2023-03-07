@@ -1,0 +1,115 @@
+<div class="container">
+    <div *ngIf="!character; else divCharacter">
+        <app-black-hole></app-black-hole>
+    </div>
+
+    <ng-template #divCharacter>
+
+        <div class="character-container">
+
+            <div class="title-container">
+                <h1>
+                    {{ character?.name }}
+                    <small>- {{ character?.species }} </small>
+                </h1>
+                <mat-divider></mat-divider>
+
+            </div>
+
+            <br>
+
+            <div class="info-container">
+                <div class="left-part">
+
+                    <img class="character-img" [src]="character?.image">
+
+                </div>
+                <div class="right-part">
+
+                    <mat-list>
+                        <mat-list-item>
+                            <strong> Status:</strong>
+                            {{ character?.status }}
+                        </mat-list-item>
+                        <mat-list-item>
+                            <strong> Species:</strong>
+                            {{ character?.species }}
+                        </mat-list-item>
+                        <mat-list-item>
+                            <strong> Gender:</strong>
+                            {{ character?.gender }}
+                        </mat-list-item>
+                        <mat-list-item>
+                            <strong> Origin:</strong>
+                            {{ character?.origin.name }}
+                        </mat-list-item>
+                        <mat-list-item>
+                            <strong> Location:</strong>
+                            {{ character?.location.name }}
+                        </mat-list-item>
+                        <mat-list-item>
+                            <strong> Created:</strong>
+                            {{ character?.created | date}}
+                        </mat-list-item>
+                    </mat-list>
+
+                    <button mat-raised-button color="accent" color="accent" (click)="goBack()">
+                        Regresar
+                    </button>
+
+                </div>
+
+
+            </div>
+
+            <h2>Episodes:</h2>
+
+            <div class="table">
+                <table mat-table [dataSource]="episodes" class="mat-elevation-z8">
+
+                    <!-- ID Column -->
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>ID</th>
+                        <td mat-cell *matCellDef="let episode">{{episode.id}}</td>
+                    </ng-container>
+
+                    <!-- Name Column -->
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef>Name</th>
+                        <td mat-cell *matCellDef="let episode">{{ episode.name }}</td>
+                    </ng-container>
+
+                    <!-- Air Date Column -->
+                    <ng-container matColumnDef="airDate">
+                        <th mat-header-cell *matHeaderCellDef>Fecha de emisión</th>
+                        <td mat-cell *matCellDef="let episode">{{ episode.airDate }}</td>
+                    </ng-container>
+
+                    <!-- Episode Column -->
+                    <ng-container matColumnDef="episode">
+                        <th mat-header-cell *matHeaderCellDef>Episode</th>
+                        <td mat-cell *matCellDef="let episode">{{episode.episode}}</td>
+                    </ng-container>
+
+                    <!-- links Column -->
+                    <ng-container matColumnDef="link">
+                        <th mat-header-cell *matHeaderCellDef>Link</th>
+                        <td mat-cell *matCellDef="let episode">
+                            <button mat-mini-fab color="accent" aria-label="Boton para dirigir hacia el capitulo"
+                                [routerLink]="['/episode/descriptionEpisode', episode.id]">
+                                <mat-icon>play_arrow</mat-icon>
+                            </button>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+
+            </div>
+
+        </div>
+
+    </ng-template>
+
+</div>

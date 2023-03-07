@@ -1,0 +1,9 @@
+<div class="search-container">
+    <mat-form-field>
+        <mat-label>Busqueda Rapida</mat-label>
+        <input matInput type="text" placeholder="Ingrese un texto" #SearchInput (keyup)="searchValue(SearchInput.value)">
+        <button matSuffix mat-icon-button aria-label="Clear">
+            <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+</div>
