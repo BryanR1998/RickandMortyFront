@@ -5,12 +5,16 @@ import { SidenavComponent } from './sidenav/sidenav.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { BlackHoleComponent } from './black-hole/black-hole.component';
+import { LoadPageComponent } from './load-page/load-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidenavComponent,
     BlackHoleComponent,
+    LoadPageComponent,
+    FooterComponent,
   ],
   imports: [
     CommonModule,
@@ -20,7 +24,9 @@ import { BlackHoleComponent } from './black-hole/black-hole.component';
   exports: [
     HeaderComponent,
     SidenavComponent,
-    BlackHoleComponent
+    BlackHoleComponent,
+    LoadPageComponent,
+    FooterComponent
   ]
 })
 export class SharedModule { }

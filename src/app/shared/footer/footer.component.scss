@@ -1,0 +1,53 @@
+@import "../../../color.scss";
+
+.container-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // height: 80px;
+    // padding: 10px;
+    background-color: $dark;
+}
+
+.row-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+.imagen-container {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+}
+
+.imagen-container img{
+    width: 30%;
+}
+
+.frase-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
+}
+
+@media screen and (max-width: 600px) {
+    
+    .row-container {
+        flex-direction: column;
+    }
+    .imagen-container {
+        width: 100%;
+    }
+    .imagen-container img{
+        width: 50%;
+    }
+    .frase-container {
+        width: 100%;
+    }
+}
+
+

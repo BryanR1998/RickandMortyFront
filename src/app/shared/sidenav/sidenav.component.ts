@@ -15,7 +15,6 @@ export class SidenavComponent {
   routesData: Array<{ route: string; icon: string; name: string; }> = [
     { route: 'home', icon: 'home', name: "Inicio" },
     { route: 'character', icon: 'supervisor_account', name: "Personajes" },
-    { route: 'location', icon: 'supervisor_account', name: "Lugares" },
     { route: 'episode', icon: 'supervisor_account', name: "Capitulos" },
   ];
 

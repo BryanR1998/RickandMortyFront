@@ -41,5 +41,25 @@ export class EpisodeService {
 
   }
 
+  // Método para obtener la lista de personajes por episodio
+  getCharacterByEpisodesId(id: number): Observable<Character[] | any> {
+    const url = `${this.url}/episode/${id}`;
+
+    // Retorna un Observable que emite un arreglo de objetos Character
+    return this.http.get(url).pipe(
+
+      switchMap((data: any) => {
+        const characterUrls = data.characters;
+
+        // Realizar una petición para obtener los detalles de cada personaje
+        const characterRequests = characterUrls.map((url: any) => this.http.get(url));
+
+        // Combinar las respuestas en un único observable
+        return forkJoin(characterRequests);
+      })
+
+    )
+
+  }
 
 }

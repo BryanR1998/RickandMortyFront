@@ -28,7 +28,7 @@ export class DescriptionComponent implements OnInit {
 
   ngOnInit() {
     this.getCharacter();
-    this.getEpisode();
+    this.getEpisodeByCharacter();
   }
 
   ngAfterViewInit() {
@@ -54,9 +54,10 @@ export class DescriptionComponent implements OnInit {
         });
   }
 
-  getEpisode() {
-    // this.episodeService.getEpisodesByCharacterId(6).subscribe((data: any) => data)
+  getEpisodeByCharacter() {
+
     const characterId = +this.activatedRoute.snapshot.paramMap.get('id');
+
     this.episodeService.getEpisodesByCharacterId(characterId)
       .pipe(
         map((episodesData: any[]) => {
@@ -77,16 +78,12 @@ export class DescriptionComponent implements OnInit {
       )
       .subscribe({
         next: (episodes: any) => {
-          this.episodes = episodes;
+          this.episodes = episodes;this.episodes = episodes;
         },
         error: (error: any) => {
           console.error(error);
         }
       });
-  }
-
-  goBack() {
-    this.router.navigate(['/character']);
   }
 
 }

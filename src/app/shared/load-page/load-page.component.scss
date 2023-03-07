@@ -1,0 +1,30 @@
+@import "../../../color.scss";
+
+$circle-radius: 50px;
+
+.center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.circle {
+    width: $circle-radius;
+    height: $circle-radius;
+    background-color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 ($circle-radius / 3);
+    box-shadow: 0 -5px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.circle-1 {
+    background-color: $greenDark;
+    background: linear-gradient(tint($greenDark, -100%), tint($greenDark, 20%));
+}
+
+.circle-2 {
+    background-color: $dark;
+    background: linear-gradient(tint($dark, -10%), tint($dark, 30%));
+}

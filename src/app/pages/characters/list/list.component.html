@@ -24,7 +24,7 @@
             <mat-card class="flip-card">
                 <div class="flip-card-inner">
                     <div class="flip-card-front mat-card-content">
-                        <img mat-card-image src="{{ character.image }}" alt="Front Image">
+                        <img mat-card-image [src]="character.image" alt="Front Image">
                     </div>
 
                     <div class="flip-card-back mat-card-content">
@@ -58,9 +58,3 @@
     <div id="no-results-icon">🙁</div>
     <div id="no-results-message">No results found</div>
 </div> -->
-
-<div class="float-button">
-    <button mat-fab color="accent" matTooltip="Subir al principio" matTooltipPosition="above">
-        <mat-icon>arrow_upward</mat-icon>
-    </button>
-</div>

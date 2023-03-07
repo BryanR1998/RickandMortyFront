@@ -2,12 +2,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Character } from '../../../models/character';
 import { CharacterService } from '../../../services/character/character.service';
 
-//Importaciaon de Anime js
-import anime from 'animejs/lib/anime.es';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { debounceTime, Observable } from 'rxjs';
 import { Router } from '@angular/router';
+
+//Importaciaon de Anime js
+import anime from 'animejs/lib/anime.es';
 
 @Component({
   selector: 'app-list',
@@ -117,7 +118,7 @@ export class ListComponent implements OnInit {
 
       card.addEventListener('mouseleave', () => {
         anime({
-          targets: card.querySelector('.flip-card-inner'),
+          targets: '.flip-card-inner',
           rotateY: '0deg',
           easing: 'easeInOutSine',
           duration: 600

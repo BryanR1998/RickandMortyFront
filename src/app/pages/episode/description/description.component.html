@@ -1,3 +1,80 @@
-<h1>
-    {{ episode.name }}
-</h1>
+<div class="container">
+
+    <div *ngIf="!episode; else divEpisode">
+        <app-load-page></app-load-page>
+
+        <div class="float-button">
+            <button mat-fab color="accent" matTooltip="Regresar a la Pagina anterior" matTooltipPosition="above"
+                routerLink="/episode">
+                <mat-icon>keyboard_backspace</mat-icon>
+            </button>
+        </div>
+
+    </div>
+
+    <ng-template #divEpisode>
+
+        <div class="character-container">
+            <div class="title-container">
+                <h1>
+                    {{ episode?.name }}
+                    <small>{{ episode?.created | date }}</small>
+                </h1>
+                <mat-divider></mat-divider>
+            </div>
+            <div class="info-container">
+                <mat-list>
+                    <div mat-subheader>
+                        <h2>Datos</h2>
+                    </div>
+                    <!-- Nombre del capitulo -->
+                    <mat-list-item>
+                        <mat-icon matListItemIcon> textsms </mat-icon>
+                        <div matListItemTitle>
+                            <strong>Nombre de Capitulo: </strong>
+                            {{episode?.name}}
+                        </div>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <mat-icon matListItemIcon> date_range </mat-icon>
+                        <div matListItemTitle>
+                            <strong>Fecha de Emision: </strong>
+                            {{episode?.airDate | date}}
+                        </div>
+                    </mat-list-item>
+
+                    <mat-list-item>
+                        <mat-icon matListItemIcon> description </mat-icon>
+                        <div matListItemTitle>
+                            <strong>Codigo del Capitulo: </strong>
+                            {{episode?.episode}}
+                        </div>
+                    </mat-list-item>
+
+                </mat-list>
+            </div>
+
+            <!-- Listado en forma de grid de los personajes por episodio -->
+            <div class="cards-character-container">
+
+                <div class="title-character">
+                    <h2>Personajes:</h2>
+                </div>
+
+                <div class="cards-character">
+                    <ng-container *ngFor="let character of characters">
+
+                        <mat-card class="flip-card">
+                            <div class="flip-card-inner">
+                                <img mat-card-image [src]="character.image" [routerLink]="['/character/description' ,character.id]" alt="Front Image">
+                            </div>
+                        </mat-card>
+
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+    </ng-template>
+</div>
