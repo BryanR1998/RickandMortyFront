@@ -1,9 +1,31 @@
-.search-button {
-    margin-left: 16px;
-    background-color: #4CAF50;
-    color: white;
+@import "../../../color.scss";
 
-    &:hover {
-        background-color: #3E8E41;
-    }
+.welcome-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-message img {
+    width: 100%;
+    margin: 20px;
+    transform: translateY(-50%);
+}
+
+.welcome-message button {
+    margin: 20px;
+    background-color: $gray;
+    color: $dark;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5em;
+    cursor: pointer;
+    opacity: 0;
+}
+
+
+@media screen and (max-width: 600px) {
+
 }

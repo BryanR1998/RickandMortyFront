@@ -1,9 +1,10 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { forkJoin, map, switchMap, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Episode } from '../../models/episode';
 import { Character } from '../../models/character';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +14,24 @@ export class EpisodeService {
   private url = `${environment.apiURL}`;
 
   constructor(private http: HttpClient) { }
+
+  // Método para obtener los todos los episodios
+  // getEpisodes(): Observable<Episode[]> {
+  //   const url = `${this.url}/episode/`;
+  //   return this.http.get<Episode[]>(url);
+  // }
+
+  getEpisodes(): Observable<Episode[]> {
+    
+    const pages = [1, 2, 3]; // Hacer llamadas para las primeras 3 páginas
+    const url = `${this.url}/episode`;
+    const requests = pages.map(page => this.http.get(`${url}/?page=${page}`).pipe(
+      map((data: any) => data.results)
+    ));
+    return forkJoin(requests).pipe(
+      map((episodes: Episode[][]) => episodes.reduce((acc, val) => acc.concat(val), []))
+    );
+  }
 
   // Método para obtener los detalles de un episodio por su id
   getEpisodeById(id: number): Observable<Episode> {

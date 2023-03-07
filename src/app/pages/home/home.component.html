@@ -1,29 +1,4 @@
-<!-- characters.component.html -->
-<!-- <form>
-    <mat-form-field>
-        <mat-label>Search character by name</mat-label>
-        <input matInput type="text" [formControl]="searchTerm">
-        <mat-error *ngIf="searchTerm.errors?.required">Please enter a character name to search.</mat-error>
-        <mat-error *ngIf="invalidSearch">Invalid search term.</mat-error>
-    </mat-form-field>
-
-    <button mat-raised-button color="primary" type="button" (click)="search()">Search</button>
-</form>
-
-<p *ngIf="noResults">No results found.</p>
-
-<div *ngIf="!noResults" style="margin-top: 50px;">
-    <mat-card *ngFor="let character of characters">
-        <mat-card-header>
-            <mat-card-title>{{ character.name }}</mat-card-title>
-            <mat-card-subtitle>{{ character.species }} - {{ character.status }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image [src]="character.image" alt="{{ character.name }}">
-        <mat-card-content>
-            <p>Location: {{ character.location.name }}</p>
-            <p>Origin: {{ character.origin.name }}</p>
-        </mat-card-content>
-    </mat-card>
-    <mat-paginator [pageSize]="pageSize" [pageIndex]="currentPage - 1" [length]="totalResults"
-        (page)="onPageChanged($event)"></mat-paginator>
-</div> -->
+<div class="welcome-message">
+    <img src="../../../assets/imgs/logo_Rick_and_Morty.png" alt="">
+    <button class="btn btn-primary" routerLink="/character">Empezar</button>
+</div>

@@ -77,10 +77,10 @@ export class DescriptionComponent implements OnInit {
         })
       )
       .subscribe({
-        next: (episodes: any) => {
-          this.episodes = episodes;this.episodes = episodes;
+        next: (episodes: any[]) => {
+          this.episodes = episodes;
         },
-        error: (error: any) => {
+        error: (error: any[]) => {
           console.error(error);
         }
       });
