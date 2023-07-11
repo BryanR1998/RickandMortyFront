@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ListComponent } from './list/list.component';
 import { DescriptionComponent } from './description/description.component';
 
+// Inicializacion de Rutas para el modulo de personajes
 const routes: Routes = [
   {
       path: '',

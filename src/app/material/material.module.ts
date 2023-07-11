@@ -35,6 +35,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   imports: [
     CommonModule
   ],
+  // Se exportan los modulos de los componentes de Angular Material que vamos a implementar
   exports: [
     MatSidenavModule,
     MatToolbarModule,

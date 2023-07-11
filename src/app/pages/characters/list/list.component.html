@@ -1,6 +1,4 @@
-<!-- <app-header></app-header>
- -->
-
+<!-- Boton de busqueda -->
 <div class="search-container">
     <form class="search-form" [formGroup]="searchForm" (ngSubmit)="onSearch()">
         <mat-form-field appearance="fill">
@@ -14,7 +12,6 @@
     </form>
 </div>
 
-<!-- *ngIf="!noResults" -->
 <div>
     <div class="list-container">
 
@@ -37,7 +34,8 @@
                         </mat-card-content>
 
                         <mat-card-actions class="button-card">
-                            <button mat-raised-button color="accent" [routerLink]="['../description', character.id]">View</button>
+                            <button mat-raised-button color="accent"
+                                [routerLink]="['../description', character.id]">View</button>
                         </mat-card-actions>
 
                     </div>
@@ -47,14 +45,10 @@
         </ng-container>
     </div>
 
+    <!-- Paginador -->
     <div class="paginator-container">
         <mat-paginator [length]="totalPages" [pageSize]="pageSize" (page)="onPageChanged($event); ">
         </mat-paginator>
     </div>
 
 </div>
-
-<!-- <div id="no-results" >
-    <div id="no-results-icon">🙁</div>
-    <div id="no-results-message">No results found</div>
-</div> -->

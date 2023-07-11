@@ -17,6 +17,7 @@ export class CharacterService {
 
   constructor(private http: HttpClient) { }
 
+  // Servicio que nos perite retornar los persaonajes y la cantidad de paginas
   getCharacters(page: number, name: string): Observable<Character[]> {
     let params = new HttpParams();
     params = params.append('page', page.toString());
@@ -38,7 +39,4 @@ export class CharacterService {
     return this.http.get<Character>(url);
   }
 
-
-  // Método para obtener la lista de episodios por personaje
-  
 }

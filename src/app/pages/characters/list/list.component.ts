@@ -22,19 +22,16 @@ export class ListComponent implements OnInit {
   searchForm: FormGroup;
 
   characters: Character[] = [];
-  filteredCharacters: Observable<Character[]>;
   searchTerm: string = '';
-  isLoadingResults: boolean = false;
-  isErrorLoading: boolean = false;
   errorMessage: string = '';
   page: number = 1;
   totalPages: number = 1;
   pageSize: number = 20;
 
   constructor(
-    private _characterService: CharacterService,
-    private router: Router
+    private _characterService: CharacterService
   ) {
+    // Establecer validacion inicial del formulario
     this.searchForm = new FormGroup({
       searchTerm: new FormControl('', Validators.required)
     });
@@ -55,11 +52,10 @@ export class ListComponent implements OnInit {
 
   ngAfterViewInit() {
     this.animationCardsHover();
-    this.animatedBlackHole();
   }
 
+  // Metodo que nos permite llamar al servicio getCharacters mostrar la infomarcion que necesitamos
   loadCharacters(pageNumber?: number) {
-    this.isLoadingResults = true;
     this._characterService.getCharacters(pageNumber, this.searchTerm)
       .subscribe({
         next: (data: any) => {
@@ -67,12 +63,8 @@ export class ListComponent implements OnInit {
           this.totalPages = data.info.count;
           console.log(this.totalPages);
           console.log(this.characters);
-          this.isLoadingResults = false;
-          this.isErrorLoading = false;
         },
         error: (error) => {
-          this.isLoadingResults = false;
-          this.isErrorLoading = true;
           this.errorMessage = error.message;
         }
       })
@@ -85,7 +77,7 @@ export class ListComponent implements OnInit {
     this.loadCharacters(this.page);
     this.paginator.firstPage();
   }
-  
+
   clearSearch(): void {
     this.searchForm.reset();
     this.page = 1;
@@ -96,10 +88,6 @@ export class ListComponent implements OnInit {
   onPageChanged(event: any): void {
     this.page = event.pageIndex + 1;
     this.loadCharacters(this.page);
-  }
-
-  goToCharacterDetails(id: number): void {
-    this.router.navigate(['/characters', id]);
   }
 
   // Implementacion de animaciones para las cards con Anime JS
@@ -127,51 +115,4 @@ export class ListComponent implements OnInit {
     });
   }
 
-  animationNoResults = (): void => {
-    // Get the no-results element and its child elements
-    var noResults = document.getElementById('no-results');
-    var noResultsIcon = document.getElementById('no-results-icon');
-    var noResultsMessage = document.getElementById('no-results-message');
-
-    // Define the animation
-    var animation = anime({
-      targets: [noResults, noResultsIcon, noResultsMessage],
-      opacity: 1,
-      translateY: ['-50%', '0%'],
-      duration: 1000,
-      easing: 'easeInOutQuad',
-    });
-
-    // Start the animation
-    animation.play();
-
-  }
-
-  animatedBlackHole() {
-    // Target the search results element
-    const searchResults = document.getElementById('search-results');
-
-    // Set up the animation
-    anime.timeline({ loop: true })
-      .add({
-        targets: searchResults,
-        scale: [1, 1.2, 1],
-        duration: 1500
-      })
-      .add({
-        targets: 'h2',
-        opacity: [0, 1],
-        translateY: ['50%', 0],
-        duration: 500,
-        easing: 'easeOutExpo'
-      })
-      .add({
-        targets: searchResults,
-        scale: [1, 5],
-        opacity: [1, 0],
-        duration: 2000,
-        easing: 'easeInOutQuad'
-      });
-
-  }
 }
